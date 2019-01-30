@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sidebar Expanding Menu CSS Example</title>
+
+<!-- Normalize.css is a small CSS file that provides better cross-browser consistency 
+  in the default styling of HTML elements. -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" 
+rel="stylesheet" type="text/css">
+
+<style class="cp-pen-styles">
+
+body { font-family: 'Roboto'"Helvetica Neue", Helvetica, Arial, sans-serif;
+ background-color:#009968;  }
+
+.menu-container {
+  /* An element with position: absolute; is positioned relative to the nearest 
+  positioned ancestor. */
+  position: absolute;
+  /*  rem unit means "root em". It provides a way to specify lengths as fractions
+   of the root element's font size.  */
+  width: 5rem;
+  height: 5rem;
+  overflow: hidden;
+  left: 0;
+  top: 0;
+  /*  used to define a length of time to delay the start of a transition. */
+  -webkit-transition-delay: .3s; /* Safari */
+  transition-delay: .3s;
+}
+
+.menu {
+  position: relative;
+  width: 10rem;
+  height: 10rem;
+  background-color: #000000;
+  border-radius: 100%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+#hamburger { display: none; }
+
+label {
+  position: absolute;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 100%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  cursor: pointer;
+}
+
+label:before {
+  content: "";
+  position: absolute;
+  top: 65%;
+  left: 65%;
+  width: 1em;
+  height: 0.15em;
+  background: white;
+  box-shadow: 0 0.25em 0 0 white, 0 0.5em 0 0 white;
+  -webkit-transform: scale(2);
+  transform: scale(2);
+}
+
+#hamburger:checked ~ .menu-container {
+  width: 30vw;
+  height: 100vh;
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+
+#hamburger:checked ~ .menu-container .menu {
+  width: 250vh;
+  height: 250vh;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+.menu-container .links {
+  position: absolute;
+  left: 15vw;
+  top: 50vh;
+  z-index: 3;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.menu-container .links a {
+  display: block;
+  color: white;
+  font-size: 2rem;
+  text-decoration: none;
+  margin: 3rem;
+}
+
+.content {
+  padding: 3rem 10rem;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+  -webkit-transition-delay: .1s;
+  transition-delay: .1s;
+}
+
+.content h1 {
+  font-size: 2rem;
+  color: #fff;
+}
+
+.content h1:not(.header) { margin-top: 4rem; }
+
+.content p {
+  margin-top: 2rem;
+  color: #fafafa;
+}
+
+#hamburger:checked ~ .content {
+  padding-left: 35vw;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+</style>
+</head>
+
+<body>
+<input type="checkbox" id="hamburger" name="hamburger"/>
+<label for="hamburger"></label>
+<div class="menu-container">
+  <div class="menu"></div>
+  <div class="links"> <a href="#">Home</a> <a href="#">Introduction</a>
+     <a href="#">Techniques</a> <a href="#">Examples</a></div>
+</div>
+<div class="content">
+  <h1 class="header">Cult Psychology</h1>
+  <p> The problem with getting into cult is that you don't know it is cult.</p>
+
+  <h1 class="header">Characteristics of Cults</h1>
+  <p> Cults squash divergent views. They don't want criticisms. These are the 
+    types of things you would expect in tyrants.</p>
+  <p>In a cult lying, cheating and other unacceptable deeds become acceptable for 
+    the greater good.</p>
+</div>
+
+</body>
+</html>
